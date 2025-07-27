@@ -1,8 +1,18 @@
 # read me 
-proyecto del grupo Sideratech version Beta 0.1
+*proyecto del grupo Sideratech version Beta 0.2(actual)
 
-en esta primera version se añadio:
+*actualizacion en la interfaz de usuario de:
+  -Registro:
+    °Se modificoaron los colores y la forma del formulario de registro
+    °Se añadio un boton de regreso a la pagina principal
+    °Se elimino temporalmente el footer por causar bugs
+  -Inicio de sesión:
+    °Se añadio un boton de regreso a la pagina principal
 
--pagina de inicio
--pagina de registro
--pagina de inicio de sesión
+*proyecto del grupo Sideratech version Beta 0.1
+
+  -  En esta primera version se añadio:
+
+    °Pagina de inicio
+    °Pagina de registro
+    °Pagina de inicio de sesión
