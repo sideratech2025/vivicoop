@@ -12,33 +12,54 @@
             height: 90px;
             margin: 0px;
             padding: 0%;
-            background-color: rgb(241, 41, 241);
+            background-color: rgb(99, 99, 99);
         }
         body{
             margin: 0px;
         }
         article{
-            background-color: rgb(247, 69, 69);
             width: 90px;
             height: 90px;
         }
+        img{
+            
+            height: 100px;
+            width: 100px;
+        }
+        .fotoregistro{
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border-radius: 100%;
+            background: linear-gradient(135deg,rgb(196, 45, 45),rgb(150, 4, 194));
+        }
         form{
-            margin: 1%;
-            background-color: aqua;
+            margin: auto;
             border-radius: 30px;
             padding: 10px;
-            
+            width: 30%;
+            height: 500px;
+            background: linear-gradient(135deg,rgb(22, 117, 241),rgb(150, 4, 194));
+        
         }
         footer{
             width: 100%;
             height: 90px;
             margin: 0px;
             padding: 0%;
-            background-color: blueviolet;
+            background-color: rgb(233, 30, 223);
         }
-        form{
-            margin: auto;
-            width: 70%;
+        .regreso{
+            float: left;
+            margin-top: 28px;
+            margin-left: 18px;
+            background-color: rgb(234, 255, 255);
+        }
+        button:hover{
+            background-color: rgb(134, 134, 134);
+            border-radius: 30px;
+            transition: 0.5s;
+            color: aliceblue;
         }
     </style>
 </head>
@@ -47,37 +68,37 @@
 
     <nav>
         <article>
-            logo
+            <a href="index.html">
+                <button class="regreso">Atras</button>
+            </a>
         </article>
     </nav>
     <br>
     <br>
     <br>
    <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputName1" class="form-label">Nombre y apellido</label>
-    <input type="Nombre" class="form-control" id="exampleInputName1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputCI1" class="form-label">CI</label>
-    <input type="CI" class="form-control" id="exampleInputCI1">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+        <article class="fotoregistro">
+            <img src="person-fill.svg" alt="">
+        </article>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <div class="mb-3">
+        <label for="exampleInputName1" class="form-label">Nombre y apellido</label>
+        <input type="Nombre" class="form-control" id="exampleInputName1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputCI1" class="form-label">CI</label>
+        <input type="CI" class="form-control" id="exampleInputCI1">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 <br>
 <br>
 <br>
-<footer>
-    derechos reservados en cancun
-</footer>
 </body>
 </html>
