@@ -1,5 +1,12 @@
 # read me 
-*proyecto del grupo Sideratech version Beta 0.2.1(actual)
+*proyecto del grupo Sideratech version Beta 0.2.2(actual)
+  -se añadieron archivos de backoffice:
+    °conexiones
+    °AprobarUsuario
+    °loginAdministrado
+    °PanelAdministrado
+    
+*proyecto del grupo Sideratech version Beta 0.2.1
   -se añadieron los archivos de las API´s en php
 
 *proyecto del grupo Sideratech version Beta 0.2
