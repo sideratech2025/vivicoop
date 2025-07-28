@@ -1,5 +1,8 @@
 # read me 
-*proyecto del grupo Sideratech version Beta 0.2(actual)
+*proyecto del grupo Sideratech version Beta 0.2.1(actual)
+  -se añadieron los archivos de las API´s en php
+
+*proyecto del grupo Sideratech version Beta 0.2
 
 *actualizacion en la interfaz de usuario de:
   -Registro:
