@@ -1,5 +1,11 @@
 # read me 
-*proyecto del grupo Sideratech version Beta 0.2.2(actual)
+*proyecto del grupo Sideratech version Beta 0.3(actual)
+  -se elimino la seccion de estilos de los html y se llevaron a archivos diferentes especificos de css:
+    °stylesIndex.css
+    °StylesSesion.css
+    °StylesRegistro.css
+  -Se añadio una funcion al nav para que se mueva junto con la pantallla del usuario
+*proyecto del grupo Sideratech version Beta 0.2.2
   -se añadieron archivos de backoffice:
     °conexiones
     °AprobarUsuario
