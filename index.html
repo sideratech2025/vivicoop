@@ -1,130 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <style>
-        body{
-            width: 100%;
-            height: auto;
-            background: linear-gradient(135deg,rgb(159, 235, 59),rgb(221, 101, 22));;
-            margin: 0px;
-            padding: 0%;
-        }
-        nav{
-            width: 100%;
-            height: 90px;
-            margin: 0px;
-            padding: 0%;
-            background-color: rgb(99, 99, 99);
-        }
-        article{
-            height: 100%;
-            width: 49%;
-            display: inline-block;
-        }
-        div{
-             height: 300px;
-             width: 30%;
-             background-color: rgba(0, 255, 255, 0);
-             margin: 5px;
-             display: inline-block;
-             padding: 10px;
-        }
-        img{
-            height: 100%;
-            width: 100%;
-            object-fit: contain;
-            background-color: black;
-            margin: 0%;
-            padding: 0%;
-            border: 0;
-            outline: none;
-        }
-        .sesión{
-            background-color: rgb(234, 255, 255);
-            height: 40px;
-            float: right;
-            margin: 10px;
-            margin-top: 20px;
-        }
-        .registrarse{
-            background-color: rgb(234, 255, 255);
-            height: 40px;
-            float: right;
-            margin: 10px;
-            margin-top: 20px;
-        }
-        button:hover{
-            background-color: rgb(134, 134, 134);
-            border-radius: 30px;
-            transition: 0.5s;
-            color: aliceblue;
-        }
-        a{
-            color: black;
-        }
-        p{
-            font-size: large;
-        }
-        .imagen{
-            width: 100%;
-            height: 700px;
-            padding: 0%;
-        }
-        .grande{
-            height: 850px;
-            object-fit: cover;
-            display: block;
-        }
-        .imgpeque1{
-            height: auto;
-        }
-        .imgpeque2{
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    
-    <nav>
-        
-            <article>
-                <br>
-            </article>
+    <link rel="stylesheet" href="stylesIndex.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <article>
+        <br />
+      </article>
 
-            <article>
-                
-                <a href="registro.html">
-                    <button class="registrarse">registrarse</button>
-                </a>
-                
-                <a href="InicioSesion.html">
-                    <button class="sesión">iniciar sesion</button>
-                </a>
-            </article>
-        
-        
+      <article>
+        <a href="registro.html">
+          <button class="registrarse">registrarse</button>
+        </a>
+
+        <a href="InicioSesion.html">
+          <button class="session">iniciar sesion</button>
+        </a>
+      </article>
     </nav>
-    
+
     <div class="imagen">
-        <img src="const.jpg" class="grande" alt="">
+      <img src="const.jpg" class="grande" alt="" height="500" width="500"/>
     </div>
     <div>
-        <img src="const.jpg" class="imgpeque1" alt="imagen de construccion">
+      <img src="const.jpg" class="imgpeque1" alt="imagen de construccion" />
     </div>
     <div>
-        
-            
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores consequuntur velit voluptatibus, iste magnam, atque eius blanditiis molestias vel quam ad libero delectus facere alias officiis consequatur, beatae harum ipsum?</p>
-        
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+        consequuntur velit voluptatibus, iste magnam, atque eius blanditiis
+        molestias vel quam ad libero delectus facere alias officiis consequatur,
+        beatae harum ipsum?
+      </p>
     </div>
     <div>
-        <img src="const1.jpg" class="imgpeque2" alt="imagen de construccion 2">
+      <img src="const1.jpg" class="imgpeque2" alt="imagen de construccion 2" />
     </div>
-    <footer>
-        proyecto escolar del grupo SideraTech
-    </footer>
-</body>
+    <footer>proyecto escolar del grupo SideraTech</footer>
+  </body>
 </html>

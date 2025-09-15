@@ -1,16 +1,17 @@
 <?php
 $host = "localhost";
-$db = "ProyectoFinal";
 $usuario = "root";
 $contraseña = "";
+$db = "ProyectoFinal";
 $charset = "utf8mb4";
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$conexion = mysqli_connect(·$host, $usuario, $contraseña, $db, $charset);
 
 try {
-    $pdo = new PDO($dsn, $usuario, $contraseña);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error al intentar conectar a la base de datos: " . $e->getMessage());
+    $pdo = new PDO($conexion);
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION;
+}
+catch (Exception $e) {
+    die("Error al intentar conectar a la base de datos: ") . $e->getMessage()
 }
 ?>
