@@ -1,32 +1,27 @@
 <?php
-require 'conexion.php';
+header('Content-Type: application/json');
+require_once '../config/config.php'; 
+$data = json_decode(file_get_contents('php://input'), true);
 
-// Recibir datos por POST
-$nombre = trim($_POST['nombre'] ?? '');
-$mail = trim($_POST['mail'] ?? '');
-$password = trim($_POST['password'] ?? '');
-$ci = trim($_POST['ci'] ?? '');
-
-if (!$nombre || !$mail || !$password || !$ci) {
-    die('Todos los campos son requeridos.');
+if (!isset($data['nombre'], $data['mail'], $data['contrasena'], $data['ci'])) {
+    echo json_encode(['error' => 'Missing required fields']);
+    exit;
 }
 
-// Verificar si ya existe el correo o la CI
-$stmt = $pdo->prepare('SELECT IDUsuario FROM usuarios WHERE Mail = ? OR CI = ?');
-$stmt->execute([$mail, $ci]);
-if ($stmt->fetch()) {
-    die('El mail o la cédula ya están registrados.');
-}
+$nombre = $data['nombre'];
+$mail = $data['mail'];
+$contrasena = $data['contrasena'];
+$ci = $data['ci'];
+$tipo = 'Vecino';
 
-// Encriptar la contraseña
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-// Insertar el nuevo usuario (EstadoCuenta se coloca por defecto en FALSE)
-$stmt = $pdo->prepare('INSERT INTO usuarios (Nombre, Mail, Contraseña, CI) VALUES (?, ?, ?, ?)');
-if ($stmt->execute([$nombre, $mail, $hashedPassword, $ci])) {
-    echo 'Usuario registrado correctamente.';
-} else {
-    echo 'Error al registrar el usuario.';
+try {
+    $stmt = $pdo->prepare("INSERT INTO Usuario (IDUsuario, Nombre, Mail, Contraseña, CI, TIPO) VALUES (NULL, ?, ?, ?, ?, ?)");
+    $stmt->execute([$nombre, $mail, $contrasena, $ci, $tipo]);
+    $idUsuario = $pdo->lastInsertId();
+    $stmtVecino = $pdo->prepare("INSERT INTO Vecino (IDUsuario) VALUES (?)");
+    $stmtVecino->execute([$idUsuario]);
+    echo json_encode(['success' => true, 'message' => 'User registered, awaiting approval']);
+} catch (PDOException $e) {
+    echo json_encode(['error' => 'Registration failed: ' . $e->getMessage()]);
 }
 ?>
-

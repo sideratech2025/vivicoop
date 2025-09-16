@@ -1,22 +1,33 @@
 <?php
-require 'conexion.php';
+header('Content-Type: application/json');
+require_once '../config/config.php'; 
+$data = json_decode(file_get_contents('php://input'), true);
 
-// Recibir datos por POST
-$mail = trim($_POST['mail'] ?? '');
-$password = trim($_POST['password'] ?? '');
-
-if (!$mail || !$password) {
-    die('Mail y contraseña requeridos.');
+if (!isset($data['mail'], $data['contrasena'])) {
+    echo json_encode(['error' => 'Missing required fields']);
+    exit;
 }
 
-// Buscar usuario
-$stmt = $pdo->prepare('SELECT * FROM usuarios WHERE Mail = ?');
-$stmt->execute([$mail]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$mail = $data['mail'];
+$contrasena = $data['contrasena'];
 
-if ($user && password_verify($password, $user['Contraseña'])) {
-    echo 'Inicio de sesión correcto. IDUsuario: ' . $user['IDUsuario'];
-} else {
-    echo 'Credenciales incorrectas.';
+try {
+    $stmt = $pdo->prepare("SELECT * FROM Usuario WHERE Mail = ? AND Contraseña = ?");
+    $stmt->execute([$mail, $contrasena]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$user) {
+        echo json_encode(['success' => false, 'message' => 'Invalid credentials']);
+        exit;
+    }
+
+    if (!$user['EstadoCuenta']) {
+        echo json_encode(['success' => false, 'message' => 'Account not approved']);
+        exit;
+    }
+
+    echo json_encode(['success' => true, 'user' => ['id' => $user['IDUsuario'], 'nombre' => $user['Nombre']]]);
+} catch (PDOException $e) {
+    echo json_encode(['error' => 'Login failed: ' . $e->getMessage()]);
 }
 ?>
