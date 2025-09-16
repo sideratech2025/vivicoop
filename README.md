@@ -1,5 +1,10 @@
 # read me 
-*proyecto del grupo Sideratech version Beta 0.3(actual)
+*proyecto del grupo Sideratech version Beta 0.4(actual)
+  -se añadieron mejoras esteticas a las siguientes paginas:
+    °index
+    °inicio de sesión
+    °registro
+*proyecto del grupo Sideratech version Bieta 0.3
   -se elimino la seccion de estilos de los html y se llevaron a archivos diferentes especificos de css:
     °stylesIndex.css
     °StylesSesion.css
