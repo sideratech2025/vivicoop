@@ -3,43 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="stylesheet" href="stylesIndex.css" />
+  <title>Bienvenido a SideraTech</title>
+  <link rel="stylesheet" href="stylesIndex.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar">
-      <article>
-        <br />
+      <article style="vertical-align: middle;">
+        <span style="font-family: 'Montserrat', sans-serif; font-size: 2.2rem; color: #fff; margin-left: 30px; letter-spacing: 2px;">SideraTech</span>
       </article>
-
       <article>
         <a href="registro.html">
-          <button class="registrarse">registrarse</button>
+          <button class="registrarse">Registrarse</button>
         </a>
-
         <a href="InicioSesion.html">
-          <button class="session">iniciar sesion</button>
+          <button class="session">Iniciar sesión</button>
         </a>
       </article>
     </nav>
 
-    <div class="imagen">
-      <img src="const.jpg" class="grande" alt="" height="500" width="500"/>
-    </div>
-    <div>
-      <img src="const.jpg" class="imgpeque1" alt="imagen de construccion" />
-    </div>
-    <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-        consequuntur velit voluptatibus, iste magnam, atque eius blanditiis
-        molestias vel quam ad libero delectus facere alias officiis consequatur,
-        beatae harum ipsum?
-      </p>
-    </div>
-    <div>
-      <img src="const1.jpg" class="imgpeque2" alt="imagen de construccion 2" />
-    </div>
-    <footer>proyecto escolar del grupo SideraTech</footer>
+    <main style="margin-top: 110px;">
+      <div class="imagen">
+        <img src="const.jpg" class="grande" alt="Construcción moderna" height="500" width="500"/>
+        <div class="overlay-text">
+          <h1 style="font-family: 'Montserrat', sans-serif; color: #fff; font-size: 3rem; text-shadow: 2px 2px 8px #333; margin: 0;">¡Bienvenido!</h1>
+          <p style="font-family: 'Roboto', sans-serif; color: #fff; font-size: 1.3rem; text-shadow: 1px 1px 6px #333; margin-top: 10px;">Explora el futuro con SideraTech</p>
+        </div>
+      </div>
+      <section style="display: flex; justify-content: space-around; align-items: center; margin-top: 40px;">
+        <div style="background: linear-gradient(135deg, #ffb347 0%, #ffcc80 100%); border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 30px; width: 30%; min-width: 250px;">
+          <img src="const.jpg" class="imgpeque1" alt="imagen de construccion" style="border-radius: 15px; box-shadow: 0 2px 8px #aaa;" />
+          <p style="font-family: 'Roboto', sans-serif; color: #333; font-size: 1.1rem; margin-top: 15px;">Innovación, tecnología y trabajo en equipo para construir el mañana.</p>
+        </div>
+        <div style="background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 100%); border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 30px; width: 30%; min-width: 250px;">
+          <img src="const1.jpg" class="imgpeque2" alt="imagen de construccion 2" style="border-radius: 15px; box-shadow: 0 2px 8px #aaa;" />
+          <p style="font-family: 'Roboto', sans-serif; color: #333; font-size: 1.1rem; margin-top: 15px;">Únete y sé parte de nuestra cooperativa de viviendas. ¡Tu creatividad es bienvenida!</p>
+        </div>
+      </section>
+    </main>
+    <footer style="background: linear-gradient(90deg, #7f7fd5 0%, #ffb347 100%); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; text-align: center; padding: 30px 0; margin-top: 60px; letter-spacing: 1px;">Proyecto escolar del grupo SideraTech</footer>
   </body>
 </html>
