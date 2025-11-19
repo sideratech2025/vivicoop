@@ -2,7 +2,7 @@
 $host = "localhost";
 $usuario = "root";
 $contraseña = "";
-$db = "ProyectoFinal";
+$db = "Proyectosidera";
 $charset = "utf8mb4";
 
 $conexion = mysqli_connect(·$host, $usuario, $contraseña, $db, $charset);

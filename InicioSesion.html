@@ -28,28 +28,30 @@
     <br />
     <br />
     <br />
-    <form action="login.php" method="post">
+    <form action="login.php" method="POST">
       <article class="fotoInicio">
         <img src="person-fill.svg" alt="" />
       </article>
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label">Email</label>
         <input
           type="email"
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          name="mail"
         />
       </div>
       <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <label for="exampleInputPassword1" class="form-label">contraseña</label>
         <input
           type="password"
           class="form-control"
           id="exampleInputPassword1"
+          name="contrasena"
         />
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" value="enviar" class="btn btn-primary">enviar</button>
     </form>
     <br />
     <br />

@@ -1,0 +1,116 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #7f7fd5 0%, #ffb347 100%);
+  min-height: 100vh;
+  color: #222;
+}
+
+.topnav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: linear-gradient(90deg, #7f7fd5 0%, #ffb347 100%);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  z-index: 20;
+}
+
+.brand{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.action-btn{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #7f7fd5;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+
+.action-btn:active{ transform: scale(0.98); }
+
+main{
+  margin-top: 120px; /* espacio para nav */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.panel{
+  width: 80%;
+  max-width: 1100px;
+  min-height: 320px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.92));
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.panel h2{
+  margin: 0 0 18px 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+
+.buttons{
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.oval-btn{
+  padding: 18px 36px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.oval-btn:active{ transform: translateY(1px); }
+
+.oval-btn.primary{
+  background: linear-gradient(135deg, #7f7fd5 0%, #86a8e7 100%);
+  color: #fff;
+}
+
+.oval-btn.secondary{
+  background: linear-gradient(135deg, #ffb347 0%, #ffcc80 100%);
+  color: #333;
+}
+
+.oval-btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+@media (max-width: 720px){
+  .panel{ width: 94%; padding: 20px; }
+  .buttons{ flex-direction: column; gap: 14px; }
+  .oval-btn{ width: 100%; padding: 14px 18px; }
+}

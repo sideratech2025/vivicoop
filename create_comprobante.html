@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Comprobante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <style>body{padding:20px;max-width:720px;margin:auto}</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Comprobante</h1>
+        <form id="comprobanteForm" action="create_comprobante.php" method="POST">
+            <div class="mb-3">
+                <label class="form-label">Tipo</label>
+                <select name="tipo" class="form-select" required>
+                    <option value="horas">horas</option>
+                    <option value="pago">pago</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha de envío (autocompletada)</label>
+                <input type="text" name="FechaEnvio" id="FechaEnvio" class="form-control" readonly required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Monto</label>
+                <input type="number" step="0.01" name="monto" class="form-control" required>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Enviar comprobante</button>
+            </div>
+        </form>
+
+        <br>
+        <a href="home.html" class="btn btn-secondary">Volver</a>
+    </div>
+
+    <script>
+        (function(){
+            const now = new Date();
+            function pad(n){return n<10? '0'+n : n}
+            const s = now.getFullYear()+"-"+(pad(now.getMonth()+1))+"-"+pad(now.getDate());
+            document.getElementById('FechaEnvio').value = s;
+        })();
+    </script>
+</body>
+</html>

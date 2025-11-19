@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de sesión - Admin</title>
+        <link rel="stylesheet" href="StylesSesion.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+            crossorigin="anonymous"/>
+</head>
+<body>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+            crossorigin="anonymous"
+        ></script>
+
+        <nav>
+            <article>
+                <a href="index.html">
+                    <button class="regreso">Atras</button>
+                </a>
+            </article>
+        </nav>
+
+        <form action="dashboard.php" method="POST" class="container" style="max-width:420px; margin-top:3rem;">
+            <article class="fotoInicio text-center">
+                <img src="person-fill.svg" alt="" />
+            </article>
+
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="mail" required />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="contrasena" required />
+            </div>
+
+           
+            <input type="hidden" name="role" value="admin" />
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+            </div>
+        </form>
+
+        <footer style="margin-top:3rem; text-align:center">proyecto escolar del grupo SideraTech</footer>
+</body>
+</html>

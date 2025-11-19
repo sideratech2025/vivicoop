@@ -1,10 +1,127 @@
 <?php
+require_once 'config.php';
+
+// Si se envía un formulario de aprobación (desde la lista), actualizar EstadoComprobante a 1
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['approve_id'])) {
+    $approveId = intval($_POST['approve_id']);
+    try {
+        $up = $pdo->prepare('UPDATE Comprobante SET EstadoComprobante = 1 WHERE IDComp = ?');
+        $up->execute([$approveId]);
+        header('Location: comprobante.php?approved=1');
+        exit;
+    } catch (PDOException $e) {
+        $error = 'Update failed: ' . $e->getMessage();
+    }
+}
+
+// Si es GET, mostrar la lista de comprobantes cuyo EstadoComprobante = 0
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    try {
+        // Leer directamente de la tabla Comprobante los campos solicitados
+        $sql = "SELECT IDComp, FechaEnvio, COALESCE(EstadoComprobante,0) AS EstadoComprobante, tipo, monto, IDUsuario
+                FROM Comprobante
+                WHERE COALESCE(EstadoComprobante,0) = 0
+                ORDER BY FechaEnvio DESC, IDComp DESC";
+        $stmt = $pdo->query($sql);
+        $comprobantes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        $error = 'Error fetching comprobantes: ' . $e->getMessage();
+        $comprobantes = [];
+    }
+    ?>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Comprobantes pendientes</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+        <style>body{padding:20px}</style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Comprobantes pendientes</h1>
+            <?php if (!empty($error)): ?>
+                <div class="alert alert-danger"><?php echo htmlspecialchars($error); ?></div>
+            <?php endif; ?>
+            <?php if (isset($_GET['approved'])): ?>
+                <div class="alert alert-success">Comprobante aprobado correctamente.</div>
+            <?php endif; ?>
+
+            <?php if (empty($comprobantes)): ?>
+                <p>No hay comprobantes pendientes.</p>
+            <?php else: ?>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>FechaEnvío</th>
+                            <th>EstadoComprobante</th>
+                            <th>Tipo</th>
+                            <th>Usuario</th>
+                            <th>Monto</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($comprobantes as $c): ?>
+                        <?php
+                        // Obtener nombre de usuario si existe
+                        $nombreUsuario = '';
+                        if (!empty($c['IDUsuario'])) {
+                            try {
+                                $su = $pdo->prepare('SELECT Nombre FROM Usuario WHERE IDUsuario = ? LIMIT 1');
+                                $su->execute([$c['IDUsuario']]);
+                                $row = $su->fetch(PDO::FETCH_ASSOC);
+                                if ($row) $nombreUsuario = $row['Nombre'];
+                            } catch (PDOException $e) {
+                                $nombreUsuario = '';
+                            }
+                        }
+                        ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($c['FechaEnvio']); ?></td>
+                            <?php
+                                $estadoRaw = $c['EstadoComprobante'] ?? null;
+                                if ($estadoRaw === null) {
+                                    $estadoLabel = 'desconocido';
+                                } elseif ($estadoRaw == 0) {
+                                    $estadoLabel = 'vigente';
+                                } elseif ($estadoRaw == 1) {
+                                    $estadoLabel = 'aprobado';
+                                } else {
+                                    $estadoLabel = htmlspecialchars($estadoRaw);
+                                }
+                            ?>
+                            <td><?php echo $estadoLabel; ?></td>
+                            <td><?php echo htmlspecialchars($c['tipo']); ?></td>
+                            <td><?php echo htmlspecialchars($nombreUsuario); ?></td>
+                            <td><?php echo htmlspecialchars($c['monto']); ?></td>
+                            <td>
+                                <form method="post" style="display:inline">
+                                    <input type="hidden" name="approve_id" value="<?php echo (int)$c['IDComp']; ?>">
+                                    <button type="submit" class="btn btn-success btn-sm">Marcar como aprobado</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+            <a href="dashboard.php" class="btn btn-secondary">Volver al dashboard</a>
+        </div>
+    </body>
+    </html>
+    <?php
+    exit;
+}
+
+// Si llega POST con JSON (API), conservar comportamiento original
 header('Content-Type: application/json');
-require_once '../config/config.php';
+$raw = file_get_contents('php://input');
+$data = json_decode($raw, true);
 
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (!isset($data['idUsuario'], $data['tipo'])) {
+// Si no es JSON o no tiene los campos esperados, devolver error
+if (!is_array($data) || !isset($data['idUsuario'], $data['tipo'])) {
     echo json_encode(['error' => 'Missing required fields: idUsuario and tipo']);
     exit;
 }

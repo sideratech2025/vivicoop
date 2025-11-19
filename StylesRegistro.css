@@ -10,6 +10,7 @@
         body{
             font-family: 'Roboto', sans-serif;
             margin: 0px;
+             background: linear-gradient(135deg, #ffb347 0%, #7f7fd5  100%);
         }
         article{
             width: 90px;
