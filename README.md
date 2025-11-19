@@ -1,5 +1,7 @@
 # read me 
-*proyecto del grupo Sideratech version Beta 0.4(actual)
+*proyecto del grupo Sideratech version 1.0
+  -se añadieron y modificaron tanto apis como arcivos html para el correcto funcionamiento de la pagina
+*proyecto del grupo Sideratech version Beta 0.
   -se añadieron mejoras esteticas a las siguientes paginas:
     °index
     °inicio de sesión
